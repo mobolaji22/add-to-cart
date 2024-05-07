@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+}
+ul,
+a,
+button,
+input,
+select,
+textarea {
+  list-style: none;
+  text-decoration: none;
+  font-family: inherit;
+}
+body {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  background-color: #ddd;
+}
+.container {
+  width: 900px;
+  max-width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.5s;
+}
+header {
+  width: 100%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-cart {
+  position: relative;
+}
+.icon-cart span {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  top: 50%;
+  right: -7px;
+}
+.icon-cart {
+  cursor: pointer;
+}
+.icon-cart:active {
+  transform: translate(2px, 2px);
+}
+#store {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+  min-height: 100vh;
+  position: relative;
+  justify-content: center;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 1.5rem 1rem;
+  max-width: 25rem;
+  max-height: 40rem;
+}
+.product img {
+  width: 100%;
+  height: 60%;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.15));
+}
+h3 {
+  font-size: 1.6rem;
+}
+p {
+  font-size: 1.4rem;
+}
+.product span{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    font-size: 1.2rem;
+}
+.product button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #ddd;
+  text-wrap: nowrap;
+  box-shadow: 2px 2px 5px;
+}
+button img {
+  width: 22px !important;
+}
+button:active {
+  transform: translate(2px, 2px);
+}
+#cart {
+  display: grid;
+  grid-template-rows: 25px 1fr 40px 40px;
+  background-color: #ddd;
+  inset: 0 -400px 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  width: 400px;
+  height: 100dvh;
+  position: fixed;
+  transition: 0.7s;
+}
+body.showCart #cart {
+  inset: 0 0 0 auto;
+}
+body.showCart .container {
+  transform: translateX(-250px);
+}
+#cart h2 {
+  text-align: center;
+  margin: 1rem;
+}
+#cart-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#cart button {
+  cursor: pointer;
+  border: none;
+}
+#cart button:last-child {
+  color: #fff;
+  background-color: green;
+}
+#cart-items {
+  overflow: auto;
+  font-size: 1.3rem;
+}
+#cart-items::-webkit-scrollbar {
+  display: none;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 50px 130px 40px 1fr;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  text-wrap: nowrap;
+  padding: 1rem;
+}
+.cart-item:nth-child(even) {
+  background-color: #333;
+  color: #ddd;
+}
+.cart-item img {
+  width: 100%;
+}
+.quantity span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background-color: #555;
+  cursor: pointer;
+}
+.quantity span:nth-child(2) {
+  background: transparent;
+}
+.quantity span:active {
+  transform: translate(2px, 2px);
+}
+.quantity span:nth-child(2):active {
+  transform: translate(0, 0);
+}
+
+#totalPrice {
+    margin: 0 auto;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    #store {
+        grid-template-columns: repeat(3, 1fr);
+      }
+}
+@media screen and (max-width: 450px) {
+    #store {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      #cart {
+        inset: 0 -350px 0 auto;
+        width: 350px;
+      }
+      body.showCart #cart {
+        inset: 0 0 0 auto;
+      }
+}
+@media screen and (max-width: 370px) {
+      #cart {
+        inset: 0 -100% 0 auto;
+        width: 100%;
+      }
+      body.showCart #cart {
+        inset: 0 0 0 auto;
+      }
+}
