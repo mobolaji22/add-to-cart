@@ -1,5 +1,15 @@
 {
+    "version": 2,
+    "builds": [
+        {
+            "src": "add-to-cart/**",
+            "use": "@vercel/static"
+        }
+    ],
     "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
+        { 
+            "src": "/(.*)",
+            "dest": "/add-to-cart/$1"
+        }
     ]
-  }
+}
